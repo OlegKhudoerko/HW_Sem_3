@@ -20,9 +20,9 @@ from random_list import random_list as ls_r
 def mult(count):
     ls_mult = []
     for i in range((len(count))//2):
-        ls_mult.append(ls[i]*ls[-i-1])
- 
-    if (len(count)/2) % 1 != 0:
+        ls_mult.append(ls[i] * ls[-i-1])
+
+    if len(count) % 2 != 0:
         ls_mult.append(ls[((len(count))//2)])
 
     return ls_mult
