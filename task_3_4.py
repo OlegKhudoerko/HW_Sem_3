@@ -1,5 +1,5 @@
 # 4.* Задайте список из произвольных вещественных чисел, количество задаёт пользователь.
-# Напишите программу, которая найдёт разницу между максимальным и минимальным значением 
+# Напишите программу, которая найдёт разницу между максимальным и минимальным значением
 # дробной части элементов.
 # in
 # 5
@@ -17,32 +17,25 @@ from random import uniform
 
 
 def random_list(count):
-    ls = []
     while count < 0:
         print("Не корректные данные!")
         count = int(input("\nПовторите ввод: "))
-
-    for i in range(count):
-        ls.append(round(uniform(1, count), 2))
-
+    ls = [(round(uniform(1, count), 2)) for i in range(count)]
+    print(ls)
     return ls
 
 
 def res_dif(ls):
-    max = min = ls[0] % 1
-
+    max = min = round(ls[0] % 1, 2)
     for i in range(1, len(ls)):
         num = round(ls[i] % 1, 2)
-        if num > max:
+        if num >= max:
             max = num
-        elif num < min:
+        else:
             min = num
-
-    result = round(max - min, 2)
-    print(f"Min: {min}, Max: {max}. Difference: {result}")
-    return result
+    print(f"Min: {min}, Max: {max}. Difference: {round(max - min, 2)}")
+    return
 
 
 worksheet = random_list(int(input("Введите число: ")))
-print(worksheet)
-print(res_dif(worksheet))
+res_dif(worksheet)
